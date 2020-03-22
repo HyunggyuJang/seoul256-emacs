@@ -224,7 +224,6 @@
 
      ;; mode-line
      `(mode-line            ((t (:foreground ,(hex 187 187) :background ,(hex 95 95)))))
-     `(mode-line-buffer-id  ((t (:foreground ,(hex 230 230)))))
      `(mode-line-emphasis   ((t (:foreground ,(hex 256 256) :weight bold))))
      `(mode-line-highlight  ((t (:inherit highlight))))
      `(mode-line-inactive   ((t (:foreground ,(hex (+ dark-bg 10) (- light-bg 10)) :background ,(hex (+ dark-bg 2) (- light-bg 2) )))))
