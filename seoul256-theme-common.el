@@ -65,7 +65,7 @@
   :type 'number
   :group 'seoul256)
 
-(deftheme seoul256 "Low-contrast color scheme based on Seoul Colors")
+;; (deftheme seoul256 "Low-contrast color scheme based on Seoul Colors")
 
 (defvar seoul256-default-colors-alist
   '((16 . "#000000")  (17 . "#00005F")  (18 . "#000087")
@@ -216,17 +216,17 @@
      `(isearch-fail    ((t (:background ,(hex 196 196) :foreground ,(hex (+ dark-bg 3) 253)))))
 
      ;; line number
-     `(line-number                 ((t (:foreground ,(hex 101 101) :background ,(hex (+ dark-bg 1) (- light-bg 2))))))
-     `(line-number-current-line    ((t (:foreground ,(hex 131 131) :background ,(hex (- dark-bg 1) (- light-bg 1))))))
+     `(line-number                 ((t (:family "Fira Code Light" :foreground ,(hex 101 101) :background ,(hex (+ dark-bg 1) (- light-bg 2))))))
+     `(line-number-current-line    ((t (:family "Fira Code Light" :foreground ,(hex 131 131) :background ,(hex (- dark-bg 1) (- light-bg 1))))))
 
      ;; linum
      `(linum    ((t (:inherit line-number))))
 
      ;; mode-line
-     `(mode-line            ((t (:foreground ,(hex 187 187) :background ,(hex 95 95)))))
-     `(mode-line-emphasis   ((t (:foreground ,(hex 256 256) :weight bold))))
+     `(mode-line            ((t (:family "Fira Code Retina" :foreground ,(hex 187 187) :background ,(hex 95 95)))))
+     `(mode-line-emphasis   ((t (:family "Fira Code" :foreground ,(hex 256 256) :weight bold))))
      `(mode-line-highlight  ((t (:inherit highlight))))
-     `(mode-line-inactive   ((t (:foreground ,(hex (+ dark-bg 10) (- light-bg 10)) :background ,(hex (+ dark-bg 2) (- light-bg 2) )))))
+     `(mode-line-inactive   ((t (:family "Fira Code Light" :foreground ,(hex (+ dark-bg 10) (- light-bg 10)) :background ,(hex (+ dark-bg 2) (- light-bg 2) )))))
 
      ;; show-paren
      `(show-paren-match     ((t (:foreground ,(hex 226 200) :background ,(hex (+ dark-bg 3) (- light-bg 3)) :weight bold))))
@@ -235,6 +235,20 @@
      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
      ;;;; package-specific
      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+     ;; org
+     `(org-date ((t (:foreground ,(hex 140 151) :underline t))))
+     `(org-block ((t (:inherit fixed-pitch))))
+     `(org-code ((t (:inherit (shadow fixed-pitch)))))
+     `(org-document-info ((t (:foreground ,(hex 133  173)))))
+     `(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+     `(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+     `(org-link ((t (:underline t :inherit link))))
+     `(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+     `(org-property-value ((t (:inherit fixed-pitch))) t)
+     `(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+     `(org-table ((t (:inherit fixed-pitch :foreground ,(hex 67 66)))))
+     `(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+     `(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
      ;; anzu
      `(anzu-mode-line    ((t (:inherit mode-line-highlight))))
 
@@ -293,11 +307,16 @@
 
      ;; powerline
      `(powerline-active0     ((t (:inherit mode-number))))
-     `(powerline-active1     ((t (:inherit line-number))))
-     `(powerline-active2     ((t (:inherit default))))
-     `(powerline-inactive1   ((t (:inherit mode-line-inactive))))
-     `(powerline-inactive2   ((t (:inherit powerline-inactive1))))
-     `(powerline-inactive3   ((t (:inherit powerline-inactive1))))
+     `(powerline-active1     ((t (:inherit line-number :background ,(hex 217 256)))))
+     `(powerline-active2     ((t (:inherit mode-line :background ,(hex dark-bg light-bg)))))
+     `(powerline-inactive0   ((t (:inherit mode-line-inactive :background ,(hex  (+ dark-bg 4) (- light-bg 4))))))
+     `(powerline-inactive1   ((t (:inherit powerline-inactive1))))
+     `(powerline-inactive2   ((t (:inherit powerline-inactive1 :background ,(hex dark-bg 256)))))
+
+     ;; ace window
+     `(aw-leading-char-face  ((t (:family "ETBembo" :height 2.0 :foreground ,(hex 93 131)))))
+     `(aw-minibuffer-leading-char-face ((t (:family "Fira Code Retina" :height 110 :inverse-video t
+						    :inherit (aw-leading-char-face)))))
 
      ;; rainbow-delimiters
      `(rainbow-delimiters-unmatched-face ((t (:inherit show-paren-mismatch))))
@@ -374,13 +393,13 @@
                  (< seoul256-current-bg 256)))
     (seoul256-create 'seoul256 (+ 1 seoul256-current-bg))))
 
-(seoul256-create 'seoul256 seoul256-background)
+;; (seoul256-create 'seoul256 seoul256-background)
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'seoul256)
+(provide 'seoul256-theme-common)
 
 ;;; seoul256-theme.el ends here

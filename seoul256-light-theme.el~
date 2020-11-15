@@ -1,0 +1,7 @@
+(require 'seoul256-theme-common)
+
+(deftheme seoul256-light "Low-contrast, light color scheme based on Seoul Colors")
+
+(seoul256-create 'seoul256 seoul256-alternate-background)
+
+(provide-theme 'seoul256-light)
